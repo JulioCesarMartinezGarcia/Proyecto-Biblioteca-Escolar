@@ -1,0 +1,49 @@
+Biblioteca escolar con ejemplares irregulares.
+El sistema debe administrar el catalogo de una biblioteca donde cada libro/titulo
+tiene una cantidad variable de ejemplares, algunos tienen 5 copias mientras que
+otros solo 1. La restricción principal es optimizar el uso de memoria sin dejar celdas
+o espacios vacíos innecesarios.
+Comparativa de estructura de datos.
+Arreglo escalonado
+Es un arreglo de arreglos donde cada fila representa un título y puede tener una
+longitud interna distinta según su cantidad exacta de ejemplares.
+Pros.
+• Cero desperdicios de memoria: cumple de forma estricta la restricción del
+problema, ya que cada fila mide exactamente la cantidad de ejemplare
+requeridos.
+• Acceso rápido por índice: permite acceder rápidamente mediante sintaxis
+directa.
+Contras.
+• Tamaño fijo: una vez se inicializa cada sub-arreglo, no se puede redimensionar
+dinámicamente en forma sencilla si la biblioteca adquiere nuevos ejemplares o
+títulos.
+Lista de arreglos (List<int[ ]>)
+Es una lista dinámica en la que cada elemento es un arreglo estático con los
+ejemplares de cada título.
+Pros.
+• Flexibilidad en el catálogo: la lista externa permite agregar o remover los títulos
+del catálogo dinámicamente sin definir un límite inicial.
+Contras.
+• Inconsistencia de tipos: mezcla estructuras dinámicas con estáticas, vuelve la
+gestión de memoria menos predecible y complica la legibilidad del código.
+• Manejo manual rígido: los arreglos internos sigues siendo estáticos, requiriendo
+reasignaciones de memoria si se quiere modificar la cantidad de ejemplares de
+un libro.
+Lista de objetos/clases (List<Titulo>)
+Es un enfoque orientado a objetos (POO) donde se define una clase Titulo que
+encapsula la información del libro (ISBN, lista/arreglo de ejemplares y estado de
+préstamos).
+Pros.
+• Encapsulamiento y legibilidad: se mantiene la información del titulo y sus
+ejemplares unidos bajo una misma entidad lógica de forma limpia y escalable.
+• Altamente extensible: facilita la implementación de métodos para gestionar
+prestamos, devolver libros o buscar títulos sin manipular matrices directamente.
+Contras.
+• Sobrecarga de memoria: requiere instanciar objetos adicionales en el Heap,
+ocupando ligeramente mas memoria base en comparación con arreglos
+primitivos puros.
+Justificación.
+Para cumplir las restricciones de este proyecto de biblioteca escolar, el Arreglo
+Escalonado es la opción ideal, ya que garantizamos que no se reserven celdas
+nulas o no utilizadas en memoria, adaptando la dimensión de cada fila a la cantidad
+exacta de ejemplares de cada título.
