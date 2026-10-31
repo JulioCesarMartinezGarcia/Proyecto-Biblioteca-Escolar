@@ -1,0 +1,16 @@
+C:\Users\julio\OneDrive\Desktop\Roberto\Proyecto-Biblioteca-Escolar\Proyecto_Biblioteca_escolar\bin\Debug\net10.0\Proyecto_Biblioteca_escolar.exe
+C:\Users\julio\OneDrive\Desktop\Roberto\Proyecto-Biblioteca-Escolar\Proyecto_Biblioteca_escolar\bin\Debug\net10.0\Proyecto_Biblioteca_escolar.deps.json
+C:\Users\julio\OneDrive\Desktop\Roberto\Proyecto-Biblioteca-Escolar\Proyecto_Biblioteca_escolar\bin\Debug\net10.0\Proyecto_Biblioteca_escolar.runtimeconfig.json
+C:\Users\julio\OneDrive\Desktop\Roberto\Proyecto-Biblioteca-Escolar\Proyecto_Biblioteca_escolar\bin\Debug\net10.0\Proyecto_Biblioteca_escolar.dll
+C:\Users\julio\OneDrive\Desktop\Roberto\Proyecto-Biblioteca-Escolar\Proyecto_Biblioteca_escolar\bin\Debug\net10.0\Proyecto_Biblioteca_escolar.pdb
+C:\Users\julio\OneDrive\Desktop\Roberto\Proyecto-Biblioteca-Escolar\Proyecto_Biblioteca_escolar\obj\Debug\net10.0\Proyecto_Biblioteca_escolar.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\julio\OneDrive\Desktop\Roberto\Proyecto-Biblioteca-Escolar\Proyecto_Biblioteca_escolar\obj\Debug\net10.0\Proyecto_Biblioteca_escolar.AssemblyInfoInputs.cache
+C:\Users\julio\OneDrive\Desktop\Roberto\Proyecto-Biblioteca-Escolar\Proyecto_Biblioteca_escolar\obj\Debug\net10.0\Proyecto_Biblioteca_escolar.AssemblyInfo.cs
+C:\Users\julio\OneDrive\Desktop\Roberto\Proyecto-Biblioteca-Escolar\Proyecto_Biblioteca_escolar\obj\Debug\net10.0\Proyecto_Biblioteca_escolar.csproj.CoreCompileInputs.cache
+C:\Users\julio\OneDrive\Desktop\Roberto\Proyecto-Biblioteca-Escolar\Proyecto_Biblioteca_escolar\obj\Debug\net10.0\Proyecto_Biblioteca_escolar.sourcelink.json
+C:\Users\julio\OneDrive\Desktop\Roberto\Proyecto-Biblioteca-Escolar\Proyecto_Biblioteca_escolar\obj\Debug\net10.0\Proyecto_Biblioteca_escolar.dll
+C:\Users\julio\OneDrive\Desktop\Roberto\Proyecto-Biblioteca-Escolar\Proyecto_Biblioteca_escolar\obj\Debug\net10.0\refint\Proyecto_Biblioteca_escolar.dll
+C:\Users\julio\OneDrive\Desktop\Roberto\Proyecto-Biblioteca-Escolar\Proyecto_Biblioteca_escolar\obj\Debug\net10.0\Proyecto_Biblioteca_escolar.pdb
+C:\Users\julio\OneDrive\Desktop\Roberto\Proyecto-Biblioteca-Escolar\Proyecto_Biblioteca_escolar\obj\Debug\net10.0\Proyecto_Biblioteca_escolar.genruntimeconfig.cache
+C:\Users\julio\OneDrive\Desktop\Roberto\Proyecto-Biblioteca-Escolar\Proyecto_Biblioteca_escolar\obj\Debug\net10.0\ref\Proyecto_Biblioteca_escolar.dll
+C:\Users\julio\OneDrive\Desktop\Roberto\Proyecto-Biblioteca-Escolar\Proyecto_Biblioteca_escolar\obj\Debug\net10.0\Proyecto.051C2A7A.Up2Date
