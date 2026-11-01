@@ -57,5 +57,21 @@ class Program
         {
             Console.WriteLine($"- Título: {titulo.Nombre} | ISBN: {titulo.Isbn} | Ejemplares registrados: {titulo.Ejemplares.Count} | Prestamos: {titulo.PrestamosHistoricos} ");
         }
+        Console.WriteLine("=== ESTADO INICIAL ===");
+        Console.WriteLine($"Título: {t1.Nombre} | Disponibles: {t1.ObtenerEjemplaresDisponibles()} | Históricos: {t1.PrestamosHistoricos}");
+
+        Console.WriteLine("\n--- EJECUTANDO PRÉSTAMOS SIMULADOS ---");
+
+        // Préstamo 1
+        bool resultado1 = t1.RegistrarPrestamo();
+        Console.WriteLine($"Préstamo 1 realizado: {resultado1} | Disponibles restantes: {t1.ObtenerEjemplaresDisponibles()} | Históricos: {t1.PrestamosHistoricos}");
+
+        // Préstamo 2
+        bool resultado2 = t1.RegistrarPrestamo();
+        Console.WriteLine($"Préstamo 2 realizado: {resultado2} | Disponibles restantes: {t1.ObtenerEjemplaresDisponibles()} | Históricos: {t1.PrestamosHistoricos}");
+
+        // Préstamo 3 (Intentando prestar cuando ya no hay copias disponibles)
+        bool resultado3 = t1.RegistrarPrestamo();
+        Console.WriteLine($"Préstamo 3 realizado (¿Había copias?): {resultado3} | Disponibles restantes: {t1.ObtenerEjemplaresDisponibles()} | Históricos: {t1.PrestamosHistoricos}");
     }
 }

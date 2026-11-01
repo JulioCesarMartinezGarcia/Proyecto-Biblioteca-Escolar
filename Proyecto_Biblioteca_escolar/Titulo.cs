@@ -20,6 +20,33 @@ namespace Proyecto_Biblioteca_escolar
             PrestamosHistoricos = prestamosHistoricos;
             Ejemplares = new List<Ejemplar>();
         }
+        // Método para calcular cuántos ejemplares están disponibles actualmente
+        public int ObtenerEjemplaresDisponibles()
+        {
+            int contadorDisponibles = 0;
+            foreach (var ejemplar in Ejemplares)
+            {
+                if (ejemplar.Disponible)
+                {
+                    contadorDisponibles++;
+                }
+            }
+            return contadorDisponibles;
+        }
+        public bool RegistrarPrestamo()
+        {
+            // Buscar el primer ejemplar que esté disponible
+            foreach (var ejemplar in Ejemplares)
+            {
+                if (ejemplar.Disponible)
+                {
+                    ejemplar.Disponible = false; // Reduce la disponibilidad
+                    PrestamosHistoricos++;       // Actualiza el contador histórico
+                    return true; // Préstamo exitoso
+                }
+            }
+            return false; // No hay ejemplares disponibles para prestar
+        }
     }
 
     public class Ejemplar
