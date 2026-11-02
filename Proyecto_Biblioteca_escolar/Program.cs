@@ -3,6 +3,28 @@ using Proyecto_Biblioteca_escolar;
 
 class Program
 {
+    // Algoritmo de ordenamiento por inserción manual (Día 4)
+    static void OrdenarCatalogoPorInsercion(List<Titulo> catalogo)
+    {
+        int n = catalogo.Count;
+        for (int i = 1; i < n; i++)
+        {
+            Titulo actual = catalogo[i];
+            int j = i - 1;
+
+            // Ordena de mayor a menor por préstamos, y si hay empates, alfabéticamente de A a Z
+            while (j >= 0 && (
+                catalogo[j].PrestamosHistoricos < actual.PrestamosHistoricos ||
+                (catalogo[j].PrestamosHistoricos == actual.PrestamosHistoricos && string.Compare(catalogo[j].Nombre, actual.Nombre, StringComparison.Ordinal) > 0)
+            ))
+            {
+                catalogo[j + 1] = catalogo[j];
+                j--;
+            }
+
+            catalogo[j + 1] = actual;
+        }
+    }
     static void Main(string[] args)
     {
         // Catálogo principal usando List<Título>
@@ -73,5 +95,20 @@ class Program
         // Préstamo 3 (Intentando prestar cuando ya no hay copias disponibles)
         bool resultado3 = t1.RegistrarPrestamo();
         Console.WriteLine($"Préstamo 3 realizado (¿Había copias?): {resultado3} | Disponibles restantes: {t1.ObtenerEjemplaresDisponibles()} | Históricos: {t1.PrestamosHistoricos}");
+
+        Console.WriteLine("\n=== CATÁLOGO ANTES DEL ORDENAMIENTO ===");
+        foreach (var t in catalogo)
+        {
+            Console.WriteLine($"- {t.Nombre} | Préstamos: {t.PrestamosHistoricos}");
+        }
+
+        OrdenarCatalogoPorInsercion(catalogo);
+
+        Console.WriteLine("\n=== CATÁLOGO ORDENADO POR PRÉSTAMOS (Y ALFABÉTICO EN EMPATES) ===");
+        foreach (var t in catalogo)
+        {
+            Console.WriteLine($"- {t.Nombre} | Préstamos: {t.PrestamosHistoricos}");
+        }
     }
+
 }
