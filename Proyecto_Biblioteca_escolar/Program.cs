@@ -3,7 +3,7 @@ using Proyecto_Biblioteca_escolar;
 
 class Program
 {
-    // Algoritmo de ordenamiento por inserción manual (Día 4)
+    // Algoritmo de ordenamiento por inserción manual 
     static void OrdenarCatalogoPorInsercion(List<Titulo> catalogo)
     {
         int n = catalogo.Count;
@@ -24,6 +24,64 @@ class Program
 
             catalogo[j + 1] = actual;
         }
+    }
+    // Búsqueda secuencial por título (con manejo de caso no encontrado)
+    public static Titulo BuscarPorTituloSecuencial(List<Titulo> catalogo, string nombreBuscado)
+    {
+        foreach (var titulo in catalogo)
+        {
+            if (titulo.Nombre.Equals(nombreBuscado, StringComparison.OrdinalIgnoreCase))
+            {
+                return titulo; // Retorna el título si lo encuentra
+            }
+        }
+        return null; // Manejo del caso no encontrado
+    }
+
+    // Búsqueda binaria propia por ISBN sobre una copia ordenada por ISBN
+    public static Titulo BuscarPorIsbnBinaria(List<Titulo> catalogo, string isbnBuscado)
+    {
+        // Creamos una copia del catálogo para ordenarla por ISBN sin afectar el orden principal por préstamos
+        List<Titulo> copiaOrdenadaIsbn = new List<Titulo>(catalogo);
+
+        // Ordenamiento por inserción manual auxiliar basado en el ISBN
+        int n = copiaOrdenadaIsbn.Count;
+        for (int i = 1; i < n; i++)
+        {
+            Titulo actual = copiaOrdenadaIsbn[i];
+            int j = i - 1;
+            while (j >= 0 && string.Compare(copiaOrdenadaIsbn[j].Isbn, actual.Isbn, StringComparison.Ordinal) > 0)
+            {
+                copiaOrdenadaIsbn[j + 1] = copiaOrdenadaIsbn[j];
+                j--;
+            }
+            copiaOrdenadaIsbn[j + 1] = actual;
+        }
+
+        // Algoritmo de búsqueda binaria propia
+        int inicio = 0;
+        int fin = copiaOrdenadaIsbn.Count - 1;
+
+        while (inicio <= fin)
+        {
+            int medio = inicio + (fin - inicio) / 2;
+            int comparacion = string.Compare(copiaOrdenadaIsbn[medio].Isbn, isbnBuscado, StringComparison.Ordinal);
+
+            if (comparacion == 0)
+            {
+                return copiaOrdenadaIsbn[medio]; // Libro encontrado
+            }
+            else if (comparacion < 0)
+            {
+                inicio = medio + 1; // Buscar en la mitad derecha
+            }
+            else
+            {
+                fin = medio - 1;    // Buscar en la mitad izquierda
+            }
+        }
+
+        return null; // Manejo del caso no encontrado
     }
     static void Main(string[] args)
     {
@@ -71,7 +129,7 @@ class Program
         t8.Ejemplares.Add(new Ejemplar("TCC-02"));
         catalogo.Add(t8);
 
-        // 2. Verificación de que ningún título queda con celdas vacías y se cargaron los 8
+        // Verificación de que ningún título queda con celdas vacías y se cargaron los 8
         Console.WriteLine($"Total de títulos cargados: {catalogo.Count}\n");
         Console.WriteLine("Verificación de estructura y datos:");
 
@@ -108,6 +166,33 @@ class Program
         foreach (var t in catalogo)
         {
             Console.WriteLine($"- {t.Nombre} | Préstamos: {t.PrestamosHistoricos}");
+        }
+        // Pruebas de Búsqueda Secuencial por Título
+        Console.WriteLine("\n=== PRUEBA DE BÚSQUEDA SECUENCIAL POR TÍTULO ===");
+        string tituloBusqueda = "Clean Code";
+        Titulo resultadoBusquedaTitulo = BuscarPorTituloSecuencial(catalogo, tituloBusqueda);
+
+        if (resultadoBusquedaTitulo != null)
+        {
+            Console.WriteLine($"¡Encontrado! Título: {resultadoBusquedaTitulo.Nombre}, ISBN: {resultadoBusquedaTitulo.Isbn}, Disponibles: {resultadoBusquedaTitulo.ObtenerEjemplaresDisponibles()}");
+        }
+        else
+        {
+            Console.WriteLine($"El título '{tituloBusqueda}' no fue encontrado en el catálogo.");
+        }
+
+        // Pruebas de Búsqueda Binaria por ISBN
+        Console.WriteLine("\n=== PRUEBA DE BÚSQUEDA BINARIA POR ISBN ===");
+        string isbnBusqueda = "978-0132350884"; // Clean Code
+        Titulo resultadoBusquedaIsbn = BuscarPorIsbnBinaria(catalogo, isbnBusqueda);
+
+        if (resultadoBusquedaIsbn != null)
+        {
+            Console.WriteLine($"¡Encontrado por ISBN! Título: {resultadoBusquedaIsbn.Nombre} | Ejemplares restantes: {resultadoBusquedaIsbn.ObtenerEjemplaresDisponibles()}");
+        }
+        else
+        {
+            Console.WriteLine($"El ISBN '{isbnBusqueda}' no existe en el sistema.");
         }
     }
 
