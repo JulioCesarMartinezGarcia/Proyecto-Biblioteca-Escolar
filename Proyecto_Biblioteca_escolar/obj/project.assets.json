@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\julio\\OneDrive\\Desktop\\Roberto\\Proyecto-Biblioteca-Escolar\\Proyecto_Biblioteca_escolar\\Proyecto_Biblioteca_escolar.csproj",
+      "projectUniqueName": "C:\\Users\\julio\\Desktop\\Roberto\\Proyecto-Biblioteca-Escolar\\Proyecto_Biblioteca_escolar\\Proyecto_Biblioteca_escolar.csproj",
       "projectName": "Proyecto_Biblioteca_escolar",
-      "projectPath": "C:\\Users\\julio\\OneDrive\\Desktop\\Roberto\\Proyecto-Biblioteca-Escolar\\Proyecto_Biblioteca_escolar\\Proyecto_Biblioteca_escolar.csproj",
+      "projectPath": "C:\\Users\\julio\\Desktop\\Roberto\\Proyecto-Biblioteca-Escolar\\Proyecto_Biblioteca_escolar\\Proyecto_Biblioteca_escolar.csproj",
       "packagesPath": "C:\\Users\\julio\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\julio\\OneDrive\\Desktop\\Roberto\\Proyecto-Biblioteca-Escolar\\Proyecto_Biblioteca_escolar\\obj\\",
+      "outputPath": "C:\\Users\\julio\\Desktop\\Roberto\\Proyecto-Biblioteca-Escolar\\Proyecto_Biblioteca_escolar\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

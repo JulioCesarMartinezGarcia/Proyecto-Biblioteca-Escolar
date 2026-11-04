@@ -194,6 +194,34 @@ class Program
         {
             Console.WriteLine($"El ISBN '{isbnBusqueda}' no existe en el sistema.");
         }
+        // 5. Integración de búsquedas con el catálogo ordenado y Prueba de Escritorio (Día 6)
+        Console.WriteLine("\n=== INTEGRACIÓN Y PRUEBA DE ESCRITORIO COMPLETA ===");
+
+        // Simulación de búsqueda interactiva / integrada sobre el catálogo ya ordenado
+        string isbnPrueba = "978-0132350884"; // Clean Code
+        string tituloPrueba = "Design Patterns";
+
+        Console.WriteLine($"[Consulta 1] Buscando por ISBN: {isbnPrueba}");
+        Titulo resIsbn = BuscarPorIsbnBinaria(catalogo, isbnPrueba);
+        if (resIsbn != null)
+        {
+            Console.WriteLine($"-> Encontrado: '{resIsbn.Nombre}' | Préstamos históricos: {resIsbn.PrestamosHistoricos} | Ejemplares disponibles: {resIsbn.ObtenerEjemplaresDisponibles()}");
+        }
+        else
+        {
+            Console.WriteLine("-> Libro no encontrado por ISBN.");
+        }
+
+        Console.WriteLine($"\n[Consulta 2] Buscando por Título (Secuencial): {tituloPrueba}");
+        Titulo resTitulo = BuscarPorTituloSecuencial(catalogo, tituloPrueba);
+        if (resTitulo != null)
+        {
+            Console.WriteLine($"-> Encontrado: '{resTitulo.Nombre}' | ISBN: {resTitulo.Isbn} | Préstamos históricos: {resTitulo.PrestamosHistoricos}");
+        }
+        else
+        {
+            Console.WriteLine("-> Título no encontrado.");
+        }
     }
 
 }
