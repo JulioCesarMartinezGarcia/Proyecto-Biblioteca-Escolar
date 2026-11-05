@@ -1,0 +1,66 @@
+# INFORME FINAL: SISTEMA DE GESTIÓN DE BIBLIOTECA ESCOLAR
+
+## 1. Datos Generales
+* **Proyecto:** Sistema de Gestión de Biblioteca Escolar con Ejemplares Irregulares en C#
+* **Lenguaje:** C# (.NET / POO)
+* **Control de versiones:** GitHub 
+
+---
+
+## 2. Introducción y Justificación del Modelo
+El presente proyecto implementa una solución orientada a objetos para la gestión de un catálogo de biblioteca escolar que maneja cantidades irregulares de ejemplares por cada título. Frente a alternativas como arreglos regulares o matrices escalonadas fijas, el uso de colecciones dinámicas (`List<Título>` y `List<Ejemplar>`) permite optimizar el almacenamiento en memoria, evitando celdas vacías o desperdicio de recursos cuando los títulos poseen un número variable de copias físicas.
+
+---
+
+## 3. Arquitectura y Modelo de Clases
+El sistema se compone de dos entidades principales interrelacionadas mediante Programación Orientada a Objetos (POO):
+* **Clase `Titulo`**: Contiene propiedades fundamentales como `Isbn`, `Nombre`, `PrestamosHistoricos` y una lista de ejemplares (`List<Ejemplar>`). Incluye métodos para calcular la disponibilidad actual y registrar préstamos.
+* **Clase `Ejemplar`**: Representa la unidad física individual mediante un `CodigoInventario` y un estado booleano de `Disponible`.
+
+Se cargaron 8 títulos con cantidades irregulares de ejemplares y contadores históricos iniciales:
+1. *C++ Programming* (ISBN: `978-0131103627`) - 2 ejemplares | 12 préstamos históricos
+2. *Domain-Driven Design* (ISBN: `978-0321125217`) - 3 ejemplares | 8 préstamos históricos
+3. *Design Patterns* (ISBN: `978-0201633610`) - 1 ejemplar | 25 préstamos históricos
+4. *Clean Code* (ISBN: `978-0132350884`) - 3 ejemplares | 30 préstamos históricos
+5. *Head First Design Patterns* (ISBN: `978-0596007126`) - 2 ejemplares | 15 préstamos históricos
+6. *Clean Architecture* (ISBN: `978-0134494166`) - 1 ejemplar | 18 préstamos históricos
+7. *Effective Java* (ISBN: `978-0321356680`) - 2 ejemplares | 20 préstamos históricos
+8. *The Clean Coder* (ISBN: `978-0137081073`) - 2 ejemplares | 10 préstamos históricos
+
+---
+
+## 4. Simulación de Préstamos y Control de Stock
+Durante la simulación de transacciones (ejecutada sobre el título *Clean Code*), se verificó el decremento exitoso de la disponibilidad de los ejemplares físicos y el incremento sincrónico del contador de `PrestamosHistoricos`. Al agotarse las existencias, el sistema retorna un estado de rechazo preventivo, garantizando la integridad de las reglas de negocio de la biblioteca.
+
+---
+
+## 5. Algoritmo de Ordenamiento Manual por Inserción
+Para cumplir con la restricción de no utilizar métodos preconstruidos como `List<T>.Sort`, se implementó de forma manual el algoritmo de ordenamiento por inserción.
+* **Criterio principal:** Ordenamiento descendente por `PrestamosHistoricos` (de mayor a menor).
+* **Criterio secundario de estabilidad:** En caso de empate en los préstamos históricos, el algoritmo resuelve el orden de manera alfabética ascendente (`string.Compare` de la A a la Z).
+
+---
+
+## 6. Algoritmos de Búsqueda Implementados
+* **Búsqueda Secuencial por Título:** Recorre de manera iterativa el catálogo comparando cadenas con `StringComparison.OrdinalIgnoreCase` para tolerar variaciones de mayúsculas, retornando el objeto o un valor nulo en caso de no coincidencia.
+* **Búsqueda Binaria por ISBN:** Opera sobre una copia auxiliar del catálogo ordenada strictly por ISBN, aplicando la división sucesiva por mitades para localizar el recurso con eficiencia logarítmica.
+
+---
+
+## 7. Tabla de Mediciones y Comparación de Búsqueda Binaria
+A continuación se presenta la tabla comparativa de las cinco consultas de prueba realizadas para medir el desempeño y el número de comparaciones de la búsqueda binaria propia:
+
+| ISBN Consultado | Nombre del Libro | Comparaciones Propias | Estado del Resultado |
+| :--- | :--- | :---: | :--- |
+| `978-0132350884` | Clean Code | 3 | Encontrado |
+| `978-0201633610` | Design Patterns | 2 | Encontrado |
+| `978-0321125217` | Domain-Driven Design | 3 | Encontrado |
+| `978-0131103627` | C++ Programming | 1 | Encontrado |
+| `978-9999999999` | No existente | 3 | No encontrado (Manejo lógico de excepción) |
+
+---
+
+## 8. Conclusiones
+* La estructura basada en objetos y listas dinámicas (`List<Título>` con sub-listas de ejemplares) resolvió de forma óptima la irregularidad en la cantidad de copias físicas sin desperdiciar memoria.
+* La implementación manual de los algoritmos de ordenamiento y búsqueda permitió un control detallado sobre la estabilidad en los empates alfabéticos y la medición precisa de la complejidad algorítmica.
+* El proyecto fue empaquetado, probado de escritorio, documentado y sincronizado de manera exitosa en el repositorio de GitHub bajo el hito y etiqueta de versión oficial `v1.0`.
