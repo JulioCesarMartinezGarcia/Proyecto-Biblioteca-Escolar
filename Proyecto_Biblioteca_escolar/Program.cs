@@ -83,6 +83,34 @@ class Program
 
         return null; // Manejo del caso no encontrado
     }
+    public static Titulo BuscarPorIsbnBinariaConConteo(List<Titulo> catalogoOrdenadoIsbn, string isbnBuscado, out int comparaciones)
+    {
+        comparaciones = 0;
+        int inicio = 0;
+        int fin = catalogoOrdenadoIsbn.Count - 1;
+
+        while (inicio <= fin)
+        {
+            comparaciones++; // Cada ciclo del while implica una comparación de rangos/valores
+            int medio = inicio + (fin - inicio) / 2;
+            int comparacion = string.Compare(catalogoOrdenadoIsbn[medio].Isbn, isbnBuscado, StringComparison.Ordinal);
+
+            if (comparacion == 0)
+            {
+                return catalogoOrdenadoIsbn[medio]; // Encontrado
+            }
+            else if (comparacion < 0)
+            {
+                inicio = medio + 1;
+            }
+            else
+            {
+                fin = medio - 1;
+            }
+        }
+
+        return null; // No encontrado
+    }
     static void Main(string[] args)
     {
         // Catálogo principal usando List<Título>
@@ -221,6 +249,34 @@ class Program
         else
         {
             Console.WriteLine("-> Título no encontrado.");
+        }
+        // 6. Mediciones y comparaciones para el Día 7
+        Console.WriteLine("\n=== MEDICIÓN Y COMPARACIÓN DE BÚSQUEDA BINARIA ===");
+
+        // Creamos la copia ordenada por ISBN para las pruebas
+        List<Titulo> copiaIsbn = new List<Titulo>(catalogo);
+        // (Asegúrate de tener tu lógica de ordenamiento por ISBN aquí o usar la lista ya ordenada)
+        copiaIsbn.Sort((a, b) => string.Compare(a.Isbn, b.Isbn, StringComparison.Ordinal));
+
+        // Definimos 5 ISBNs de consulta (algunos existentes, otros de prueba)
+        string[] isbnsPrueba = {
+            "978-0132350884", // Clean Code
+            "978-0201633610", // Design Patterns
+            "978-0321125217", // Domain-Driven Design
+            "978-0131103627", // C++ Programming
+            "978-9999999999"  // No existente (para probar caso no encontrado)
+        };
+
+        Console.WriteLine($"{"ISBN Consultado",-20} | {"Comparaciones Propias",-22} | {"Resultado Propio"}");
+        Console.WriteLine(new string('-', 65));
+
+        foreach (string isbn in isbnsPrueba)
+        {
+            int compsPropias = 0;
+            Titulo resultado = BuscarPorIsbnBinariaConConteo(copiaIsbn, isbn, out compsPropias);
+            string nombreLibro = resultado != null ? resultado.Nombre : "No encontrado";
+
+            Console.WriteLine($"{isbn,-20} | {compsPropias,-22} | {nombreLibro}");
         }
     }
 
